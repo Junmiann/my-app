@@ -9,12 +9,23 @@ const credentials: LoginCredential[] = [
     {id: 2, userId: 2, email: "Bob@gmail.com", password: "Bob"}
 ];
 
+/* TEST: created solely to try existingGroup */
+const groups = [
+    {id: 3},
+    {id: 19}
+];
+
 router.post("/register", (req: Request, res: Response) => {
     const { userId, email, password, groupId } = req.body;
 
     const existingEmail = credentials.find(user => user.email === email);
     if (existingEmail) {
         return res.status(400).json({ error: "Email already exists" });
+    }
+
+    const existingGroup = groups.find(group => group.id === groupId);
+    if (!existingGroup) {
+        return res.status(400).json({ error: "Group ID doesn't exist "});
     }
 
     const lastUser = credentials.at(-1);
