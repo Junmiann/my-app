@@ -1,6 +1,6 @@
 import express from "express";
 import cors from "cors";
-import loginRouter from "./routes/loginCredentials.js";
+import authRouter from "./routes/auth.js";
 import usersRouter from "./routes/users.js";
 import notesRouter from "./routes/notes.js";
 
@@ -11,7 +11,7 @@ app.use(cors());
 app.use(express.json());
 
 // Routes
-app.use("/loginCredentials", loginRouter);
+app.use("/auth", authRouter);
 app.use("/users", usersRouter);
 app.use("/notes", notesRouter);
 
