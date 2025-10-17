@@ -1,7 +1,6 @@
 import { Router } from "express";
 import type { Request, Response } from "express";
 import pool from "../db.js";
-import type { Note } from "../types/note.js";
 
 const router = Router();
 
@@ -18,6 +17,20 @@ router.get("/", async (req: Request, res: Response) => {
     } catch(error) {
         console.error(error);
         res.status(500).json({ error: "Could not fetch notes" });
+    }
+});
+
+router.post("/", async (req: Request, res: Response) => {
+    try {
+        const { userId, sectionId } = req.body as { userId: number, sectionId: number };
+
+        await pool.query("INSERT INTO notes (written_by, section_id) VALUES ($1, $2)", 
+            [userId, sectionId]);
+        
+        return res.status(200).json({ message: "New note created"});
+    } catch(error) {
+        console.error(error);
+        res.status(500).json({ error: "Could not create a new note"});
     }
 });
 
