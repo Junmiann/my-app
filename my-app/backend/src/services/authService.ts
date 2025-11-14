@@ -40,7 +40,7 @@ export async function createNewUser(user: User) {
 
         await client.query(
             "INSERT INTO login_credentials (user_id, email, password) VALUES ($1, $2, $3)", 
-            [userId, user.email, hashedPassword]
+            [userId, user.email.toLowerCase(), hashedPassword]
         );
 
         await client.query("COMMIT");
