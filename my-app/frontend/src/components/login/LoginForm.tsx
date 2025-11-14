@@ -1,8 +1,11 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function LoginForm() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
+  const navigate = useNavigate();
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -27,8 +30,8 @@ export default function LoginForm() {
             return;
         }
 
-        alert("Login successful!");
         console.log(data.message, data.user);
+        navigate("/home");
 
         } catch (error) {
             console.error("Login error:", error);
