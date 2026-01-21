@@ -1,6 +1,6 @@
 import pool from "../db.js";
 
-export async function allCharacters() {
+export async function classes() {
     const client = await pool.connect();
     
     try {

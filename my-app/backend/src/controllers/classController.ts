@@ -2,10 +2,10 @@ import type { Request, Response } from "express";
 import * as classService from "../services/classService.js";
 
 // GET /classes
-export const fetchAllCharacters = async (req: Request, res: Response) => {
+export const fetchClasses = async (req: Request, res: Response) => {
     try {
-        const allCharacters = await classService.allCharacters();
-        res.status(200).json(allCharacters);
+        const classes = await classService.classes();
+        res.status(200).json(classes);
     } catch (error) {
         console.error(error);
         res.status(500).json({ error: "Database error" });
