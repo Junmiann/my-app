@@ -12,6 +12,16 @@ export default function Classes() {
 
     const [activeFilter, setActiveFilter] = useState<"job" | "origin">("job");
 
+    const handleFilterSwitch = (filter: "job" | "origin") => {
+        setActiveFilter(filter);
+
+        if (filter === "job") {
+            setJob("all");
+        } else if (filter === "origin") {
+            setOrigin("explorer");
+        }
+    };
+
     useEffect(() => {
         const fetchClasses = async () => {
             try {
@@ -54,8 +64,8 @@ export default function Classes() {
         <div>
             <h1>Classes</h1>
 
-            <button onClick={() => setActiveFilter("job")}>Jobs</button>
-            <button onClick={() => setActiveFilter("origin")}>Origin</button>
+            <button onClick={() => handleFilterSwitch("job")}>Jobs</button>
+            <button onClick={() => handleFilterSwitch("origin")}>Origin</button>
 
             {/* Show fiter based on active filter */}
             {activeFilter === "job" && (
