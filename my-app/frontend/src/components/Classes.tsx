@@ -1,15 +1,23 @@
 import { useState, useEffect } from "react";
 import type { Class } from "../types";
+import JobsFilter from "./filters/JobsFilter";
+import { type Job } from "../constants/jobs";
 
 export default function Classes() {
     const [classes, setClasses] = useState<Class[]>([]);
+    const [job, setJob] = useState<Job>("all");
 
     useEffect(() => {
         const fetchClasses = async () => {
             try {
-                const response = await fetch("http://localhost:5000/classes", {
+                const url =
+                    job === "all"
+                        ? "http://localhost:5000/classes"
+                        : `http://localhost:5000/classes/job?name=${job}`;
+
+                const response = await fetch(url, {
                     method: "GET",
-                    headers: { "Content-Type": "application/json" }
+                    headers: { "Content-Type": "application/json" },
                 });
 
                 const data = await response.json();
@@ -19,7 +27,6 @@ export default function Classes() {
                         status: response.status,
                         data: data.error,
                     });
-                    alert(data.error);
                     return;
                 }
 
@@ -30,16 +37,21 @@ export default function Classes() {
         };
 
         fetchClasses();
-    }, []);
+    }, [job]);
 
     return (
         <div>
             <h1>Classes</h1>
+
+            {/* Job filter */}
+            <JobsFilter activeJob={job} onChange={setJob} />
+
+            {/* Classes list */}
             {classes.length === 0 ? (
                 <p>Loading classes...</p>
             ) : (
                 classes.map((cls) => (
-                    <div>{cls.name}</div>
+                    <div key={cls.id}>{cls.name}</div>
                 ))
             )}
         </div>
