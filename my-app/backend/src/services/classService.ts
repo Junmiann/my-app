@@ -16,8 +16,10 @@ export async function selectedJob(jobName: string) {
     const client = await pool.connect();
 
     try {
-        const selectedJobResult = await client.query("SELECT * FROM classes WHERE LOWER(job) = LOWER($1)", 
-            [jobName]);
+        const selectedJobResult = await client.query(
+            ` SELECT * FROM classes WHERE LOWER($1) = ANY (SELECT LOWER(x) FROM unnest(job) AS x`,
+            [jobName]
+        );
 
         return selectedJobResult.rows;
     } finally {
