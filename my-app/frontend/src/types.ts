@@ -8,5 +8,5 @@ export interface Class {
     difficulty: 1 | 2 | 3 | 4 | 5;
     mobility: 1 | 2 | 3 | 4 | 5;
     range: 1 | 2 | 3 | 4 | 5;
-    imageUrl: string;
+    image_url: string;
 }
