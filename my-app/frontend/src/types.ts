@@ -8,4 +8,9 @@ export interface Class {
     description?: string;
     difficulty: 1 | 2 | 3 | 4 | 5;
     mobility: 1 | 2 | 3 | 4 | 5;
+<<<<<<< Updated upstream
+=======
+    range: 1 | 2 | 3 | 4 | 5;
+    image_url: string;
+>>>>>>> Stashed changes
 }
