@@ -46,9 +46,14 @@ export default function Character() {
             <Link to="/classes">Back to classes</Link>
 
             <h1>{character.name}</h1>
-            <p>Job: {character.job}</p>
+            <p>Job: {character.job.join(", ")}</p>
             <p>Origin: {character.origin}</p>
-
+            <p>Primary weapon: {character.primary_weapon.join(", ")}</p>
+            <p>Secondary weapon: {character.secondary_weapon.join(", ")}</p>
+            <p>Difficulty: {character.difficulty}</p>
+            <p>Mobility: {character.mobility}</p>
+            <p>Range: {character.range}</p>
+            <img src={character.image_url} alt={character.name} />
         </div>
     );
 }
