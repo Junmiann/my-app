@@ -10,7 +10,7 @@ export const ORIGINS = [
     "jianghu",
     "shine",
     "friends world",
-    "transcedent"
+    "transcendent"
 ] as const;
 
 export type Origin = typeof ORIGINS[number];
