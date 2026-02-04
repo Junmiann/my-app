@@ -96,15 +96,19 @@ export default function Classes() {
             
 
             {/* Classes list */}
-            {classes.map((cls) => (
-                <Link
-                    key={cls.id}
-                    to={`/classes/${cls.id}`}
-                    style={{ display: "block" }}
-                >
-                    {cls.name}
-                </Link>
-            ))}
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
+                {classes.map((cls) => (
+                    <Link
+                        key={cls.id}
+                        to={`/classes/${cls.id}`}
+                        className="group flex flex-col items-center p-4 rounded-lg gap-2 border border-white/5 hover:bg-white/5 transition">
+                            <img src={cls.image_url} alt={cls.name} 
+                                className="drop-shadow-[0_6px_10px_#00000066] transition group-hover:drop-shadow-[0_5px_10px_#794CA6]"/>
+                            <p className="text-sm md:text-base lg:text-lg border-t border-white/20">{cls.name}</p> 
+                    </Link>
+                ))}
+            </div>
+            
         </div>
     );
 }
