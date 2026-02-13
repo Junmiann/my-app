@@ -5,7 +5,7 @@
 :root {
   margin: 0 auto;
   text-align: center;
-  font-family: "Klee One", serif;
+  font-family: "Amiko", sans-serif;
   color: #ffffffde;
   background-image: url("../src/assets/arcane-river-road-of-vanishing.jpg");
   background-attachment: fixed;
@@ -15,9 +15,12 @@
   background-blend-mode: overlay;
 }
 
+p {
+  color: #F5F7FA;
+}
+
 a {
   font-weight: 500;
-  color: #fff;
   text-decoration: inherit;
 }
 a:hover {
@@ -34,4 +37,5 @@ body {
 h1 {
   font-size: 3.2em;
   line-height: 1.1;
+  font-family: "Bungee", sans-serif;
 }

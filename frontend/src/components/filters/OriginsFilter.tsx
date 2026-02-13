@@ -17,7 +17,7 @@ export default function OriginFilter({
                     onClick={() => onChange(origin)}
                     className={`pb-2 mr-6 transition
                         ${activeOrigin === origin
-                            ? "font-semibold border-b-2 border-white"
+                            ? "font-semibold"
                             : "text-white/60 hover:text-[#B1E1E9] hover:font-bold"
                         }`}>
                             {origin.toLocaleUpperCase()}

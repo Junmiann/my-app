@@ -62,8 +62,8 @@ export default function Classes() {
     }, [activeFilter, job, origin]);
 
     return (
-        <div className="flex flex-col max-w-6xl m-6 mx-auto">
-            <h1 className="font-bold uppercase">Classes</h1>
+        <div className="flex flex-col max-w-6xl mx-auto mt-20 mb-6">
+            <h1 className="uppercase text-start">Classes</h1>
             <div className="flex justify-end gap-6 border-b border-white/20">
                 <button onClick={() => handleFilterSwitch("job")} 
                     className={`pb-2 transition 
