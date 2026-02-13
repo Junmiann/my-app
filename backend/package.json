@@ -4,7 +4,7 @@
   "type": "module",
   "main": "index.js",
   "scripts": {
-    "dev": "concurrently \"tsc --watch\" \"nodemon dist/server.js\""
+    "dev": "tsc && concurrently \"tsc --watch\" \"nodemon dist/server.js\""
   },
   "keywords": [],
   "author": "",
